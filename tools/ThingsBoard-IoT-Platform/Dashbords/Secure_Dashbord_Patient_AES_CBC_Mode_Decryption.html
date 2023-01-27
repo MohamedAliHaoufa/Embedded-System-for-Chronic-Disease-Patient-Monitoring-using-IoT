@@ -1,0 +1,213 @@
+<!--=================================================================================================================================
+# Name           : Secure_Dashbord_Patient_AES_CBC_Mode_Decryption.html
+# Author         : Mr. Mohamed Ali Haoufa
+# Created on     : jun 7, 2022
+# Description    : This program is an HTML file which develops a Secure IoT web server interface using AES CBC mode Data Decryption.
+=====================================================================================================================================-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+          <title>IOT DASHBOARD</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+          <link rel="icon" type="image/png" href="favicon.png">
+          <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+          <link rel="stylesheet" type="text/css" href="style.css">
+          <script src="https://code.highcharts.com/highcharts.js"></script>
+          <style>
+            html {
+              font-family: Arial, Helvetica, sans-serif;
+              display: inline-block;
+              text-align: center;
+            }
+            h1 {
+              font-size: 1.8rem;
+              color: white;
+            }
+            p {
+              font-size: 1.4rem;
+            }
+                .units { font-size: 1.2rem; }
+
+            .topnav {
+              overflow: hidden;
+              background-color: #0A1128;
+              color: white; font-size: 1rem;
+            }
+            body {
+              margin: 5;
+
+            }
+            .content {
+              padding: 1%;
+            }
+            .card-grid {
+              max-width: 1200px;
+              margin: 0 auto;
+                padding: 5%;
+
+              display: grid;
+              grid-gap: 2rem;
+              grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+            }
+            .card-grid2 {
+              max-width: 1200px;
+              margin: 0 auto;
+                padding: 0%;
+
+              display: grid;
+              grid-gap: 2rem;
+              grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+            }
+            .card {
+              background-color: white;
+              box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+            }
+            .card-title {
+              font-size: 1.2 rem;
+              font-weight: bold;
+              color: #034078
+            }
+
+            .cards { max-width: 1000px; margin: 0 auto; display: grid; grid-gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); }
+            .cards2 { max-width: 1000px; margin: 0 auto; display: grid; grid-gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+            .chart-container {
+              padding-right: 5%;
+              padding-left: 5%;
+            }
+            .parameter-labels {
+                  font-size: 1.4rem;
+                  vertical-align:middle;
+                  padding-bottom: 15px;
+            }
+          </style>
+    </head>
+
+    <body>
+      
+        <div class="topnav">
+            <h1>IOT Cloud WEB SERVER Interface</h1>
+        </div>
+
+        <div class="content">
+          <div class="cards">
+      
+              <div class="card">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
+                class="bi bi-heart-pulse" viewBox="0 0 16 16"><path fill-rule="evenodd" 
+                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 
+                7H.43c-2.128-5.697 4.165-8.83 7.394-5.857.06.055.119.112.176.171a3.12 3.12 0 0 1 
+                .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 
+                8.717 2.01L8 2.748ZM2.212 10h1.315C4.593 11.183 6.05 12.458 8 
+                13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 
+                3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5Zm8.252-6.686a.5.5 0 0 0-.945.049L7.921 
+                8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 
+                4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162l-1.874-4.686Z" 
+                style="color:#00add6;" /></svg> 
+                <i style="color:#00add6;" ></i> 
+                <span class="parameter-labels">RMSSD</span> </p> <p><span id="RMSSD" >%RMSSD%</span><sup class="units">ms</sup></p>
+              </div>
+                
+              <div class="card">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
+                  class="bi bi-heart-pulse" viewBox="0 0 16 16"><path fill-rule="evenodd" 
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 
+                  7H.43c-2.128-5.697 4.165-8.83 7.394-5.857.06.055.119.112.176.171a3.12 3.12 0 0 1 
+                  .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 
+                  8.717 2.01L8 2.748ZM2.212 10h1.315C4.593 11.183 6.05 12.458 8 
+                  13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 
+                  3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5Zm8.252-6.686a.5.5 0 0 0-.945.049L7.921 
+                  8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 
+                  4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162l-1.874-4.686Z" 
+                  style="color:#00add6;" /></svg>  
+                <i style="color:#059e8a;"></i> <span class="parameter-labels">Beat Per Minute</span> </p>
+                <p><span id="BPM" >%BPM%</span><sup class="units" >BPM</sup></p>
+              </div>
+              
+              <div class="card">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
+                  class="bi bi-heart-pulse" viewBox="0 0 16 16"><path fill-rule="evenodd" 
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 
+                  7H.43c-2.128-5.697 4.165-8.83 7.394-5.857.06.055.119.112.176.171a3.12 3.12 0 0 1 
+                  .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 
+                  8.717 2.01L8 2.748ZM2.212 10h1.315C4.593 11.183 6.05 12.458 8 
+                  13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 
+                  3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5Zm8.252-6.686a.5.5 0 0 0-.945.049L7.921 
+                  8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 
+                  4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162l-1.874-4.686Z" 
+                  style="color:#00add6;" /></svg>
+                    <i style="color:#00add6;"></i> <span class="parameter-labels" >Interval Beat Interval</span></p> 
+                <p><span id="IBI" >%IBI%</span><sup class="units">s</sup></p>
+              </div>
+              
+              <div class="card">
+                  <p><i class="fas fa-thermometer-half" style="color:#00add6;" ></i> <span class="parameter-labels">Temperature</span></p>          
+                  <p><span id="temperature">%TEMPERATURE%</span><sup class="units" >&deg;C</sup></p>
+              </div>
+
+              <!-- import CryptoJS from 'crypto-js' -->
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+              <script defer> 
+              
+                    // Receiving the Patient's Encrypted data from Raspberry Pi
+                    var RMSSD = String ('${#0:0}');
+                    var BPM = String('${#1:0}');
+                    var IBI = String('${#2:0}');
+                    var TEMP = String ('${#3:0}');
+                
+                try { 
+
+                    // Defining the Encryption/Decryption Keys : 
+                    // Note : It has to be The same Keys that has been used in the Python script in Raspberry Pi for Data Encryption
+                    var iv = CryptoJS.enc.Utf8.parse('gaqIlAht+3nZWw==');
+                    var key = '03GosECsvhxGtbo=';
+                    key = CryptoJS.enc.Utf8.parse(key); 
+                    
+                    
+                    // Decryption of Data using AES128 CBC mode:
+
+                    var TEMP_decryptedString =  CryptoJS.AES.decrypt(TEMP, key, { iv: iv, mode: CryptoJS.mode.CBC});
+                    TEMP_decryptedString = TEMP_decryptedString.toString(CryptoJS.enc.Utf8);
+                    //alert('temp : ' + TEMP_decryptedString);
+                    
+                    var BPM_decryptedString =  CryptoJS.AES.decrypt(BPM, key, { iv: iv, mode: CryptoJS.mode.CBC});
+                    BPM_decryptedString = BPM_decryptedString.toString(CryptoJS.enc.Utf8);
+                    //alert('BPM : ' + BPM_decryptedString);
+                    
+                    var IBI_decryptedString =  CryptoJS.AES.decrypt(IBI, key, { iv: iv, mode: CryptoJS.mode.CBC});
+                    IBI_decryptedString = IBI_decryptedString.toString(CryptoJS.enc.Utf8);
+                    //alert('IBI : ' + IBI_decryptedString);
+                    
+                    var RMSSD_decryptedString =  CryptoJS.AES.decrypt(RMSSD, key, { iv: iv, mode: CryptoJS.mode.CBC});
+                    RMSSD_decryptedString = RMSSD_decryptedString.toString(CryptoJS.enc.Utf8);
+                    //alert('RMSSD : ' + RMSSD_decryptedString);
+                    
+                    } catch (error) {
+                      console.error(error);
+                      alert(error)
+                      // expected output: ReferenceError: nonExistentFunction is not defined
+                      // Note - error messages will vary depending on browser
+                    }
+                    //
+                    document.getElementById("temperature").innerHTML = TEMP_decryptedString;
+                    document.getElementById("BPM").innerHTML = BPM_decryptedString;
+                    document.getElementById("IBI").innerHTML = IBI_decryptedString;
+                    document.getElementById("RMSSD").innerHTML = RMSSD_decryptedString;
+            
+              </script>
+          </div>
+        </div>
+
+        <div class='card'>
+          <div class='content'>
+                  <!-- Display the received Base64 image data from Raspberry Pi -->
+                  <img height="450px" width="820px" src='data:image/jpeg+xml;base64,${#4:0}' style="transform:rotate(0deg);" />
+          </div>
+        </div>
+    </body>
+    
+</html>
