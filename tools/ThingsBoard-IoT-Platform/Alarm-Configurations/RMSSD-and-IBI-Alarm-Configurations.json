@@ -1,0 +1,383 @@
+{
+  "ruleChain": {
+    "additionalInfo": {
+      "description": ""
+    },
+    "name": "RMSSD and IBI  Alarms",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null
+  },
+  "metadata": {
+    "firstNodeIndex": 5,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1101,
+          "layoutY": 61
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "RMSSD sms",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "var sms = 'Patient 1 has an unacceptable RMSSD: ' + metadata.RMSSD + ' ms';\r\nreturn  {msg:sms, metadata: metadata, msgType: msgType} ;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "Send warning messages",
+          "layoutX": 1360,
+          "layoutY": 62
+        },
+        "type": "org.thingsboard.rule.engine.pe.twilio.TbTwilioSmsNode",
+        "name": "RMSSD twilio SMS",
+        "debugMode": true,
+        "configuration": {
+          "numberFrom": "+19785232198",
+          "numbersTo": "+213659059711",
+          "accountSid": "AC8ef3e8ede276da4fbb18faa41f812b37",
+          "accountToken": "a89013ddfa84b434279203e51d9e3f37"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 775,
+          "layoutY": 152
+        },
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "create alarm",
+        "debugMode": true,
+        "configuration": {
+          "alarmType": "General Alarm",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+          "severity": "CRITICAL",
+          "propagate": false,
+          "propagateToOwner": false,
+          "propagateToOwnerHierarchy": false,
+          "propagateToTenant": false,
+          "useMessageAlarmData": false,
+          "overwriteAlarmDetails": false,
+          "dynamicSeverity": false,
+          "relationTypes": []
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1100,
+          "layoutY": 159
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "RMSSD Email",
+        "debugMode": true,
+        "configuration": {
+          "fromTemplate": "info@testmail.org",
+          "toTemplate": "mouhamed.barcalona.79@gmail.com",
+          "ccTemplate": null,
+          "bccTemplate": null,
+          "subjectTemplate": "${deviceName} RMSSD unacceptable\n",
+          "mailBodyType": "false",
+          "isHtmlTemplate": null,
+          "bodyTemplate": "${deviceName} 1 has unacceptable RMSSD : ${RMSSD} ms\n\n"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1363,
+          "layoutY": 157
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "SendGrid SMTP",
+        "debugMode": true,
+        "configuration": {
+          "useSystemSmtpSettings": true,
+          "smtpHost": "localhost",
+          "smtpPort": 25,
+          "username": null,
+          "password": null,
+          "smtpProtocol": "smtp",
+          "timeout": 10000,
+          "enableTls": false,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 281,
+          "layoutY": 149
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "RMSSD thresholds",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return (( msg.RMSSD < 13) || ( msg.RMSSD > 87 )) ;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1099,
+          "layoutY": 352
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "IBI sms",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "var sms = 'Patient 1 has an unacceptable IBI (Interval Beat Interval) : ' + metadata.IBI + ' s';\r\nreturn  {msg:sms, metadata: metadata, msgType: msgType} ;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "Send warning messages",
+          "layoutX": 1362,
+          "layoutY": 353
+        },
+        "type": "org.thingsboard.rule.engine.pe.twilio.TbTwilioSmsNode",
+        "name": "IBI twilio SMS",
+        "debugMode": true,
+        "configuration": {
+          "numberFrom": "+19785232198",
+          "numbersTo": "+213659059711",
+          "accountSid": "AC8ef3e8ede276da4fbb18faa41f812b37",
+          "accountToken": "a89013ddfa84b434279203e51d9e3f37"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 515,
+          "layoutY": 359
+        },
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "clear alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmType": "General Alarm",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 525,
+          "layoutY": 264
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "add IBI to metadata",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": " metadata.IBI = msg.IBI;\r\n return {msg: msg, metadata: metadata, msgType: msgType};\r\n \r\n \r\n \r\n"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 772,
+          "layoutY": 265
+        },
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "create alarm",
+        "debugMode": true,
+        "configuration": {
+          "alarmType": "General Alarm",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+          "severity": "CRITICAL",
+          "propagate": false,
+          "propagateToOwner": false,
+          "propagateToOwnerHierarchy": false,
+          "propagateToTenant": false,
+          "useMessageAlarmData": false,
+          "overwriteAlarmDetails": false,
+          "dynamicSeverity": false,
+          "relationTypes": []
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1098,
+          "layoutY": 265
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "IBI Email",
+        "debugMode": true,
+        "configuration": {
+          "fromTemplate": "info@testmail.org",
+          "toTemplate": "mouhamed.barcalona.79@gmail.com",
+          "ccTemplate": null,
+          "bccTemplate": null,
+          "subjectTemplate": "${deviceName} IBI unacceptable\n",
+          "mailBodyType": "false",
+          "isHtmlTemplate": null,
+          "bodyTemplate": "${deviceName} 1 has unacceptable IBI (Interval Beat Interval) : ${IBI} s"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1363,
+          "layoutY": 268
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "SendGrid SMTP",
+        "debugMode": true,
+        "configuration": {
+          "useSystemSmtpSettings": true,
+          "smtpHost": "localhost",
+          "smtpPort": 25,
+          "username": null,
+          "password": null,
+          "smtpProtocol": "smtp",
+          "timeout": 10000,
+          "enableTls": false,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 283,
+          "layoutY": 264
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "IBI thresholds",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return (( msg.IBI < 0.6 )||( msg.IBI > 1.2 )) ;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 519,
+          "layoutY": 149
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "add RMSSD to metadata",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": " metadata.RMSSD = msg.RMSSD;\r\n return {msg: msg, metadata: metadata, msgType: msgType};\r\n \r\n \r\n \r\n"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 1,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 13,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 3,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 3,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 0,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 0,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 4,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 13,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 14,
+        "type": "True"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 13,
+        "type": "False"
+      },
+      {
+        "fromIndex": 6,
+        "toIndex": 7,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 9,
+        "toIndex": 10,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 11,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 11,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 6,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 6,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 11,
+        "toIndex": 12,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 9,
+        "type": "True"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 8,
+        "type": "False"
+      },
+      {
+        "fromIndex": 14,
+        "toIndex": 2,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
