@@ -1,0 +1,383 @@
+{
+  "ruleChain": {
+    "additionalInfo": {
+      "description": ""
+    },
+    "name": "Temperature and BPM Alarms",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null
+  },
+  "metadata": {
+    "firstNodeIndex": 8,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "description": "Send warning messages",
+          "layoutX": 1359,
+          "layoutY": 74
+        },
+        "type": "org.thingsboard.rule.engine.pe.twilio.TbTwilioSmsNode",
+        "name": "Temperature twilio SMS",
+        "debugMode": true,
+        "configuration": {
+          "numberFrom": "+19785232198",
+          "numbersTo": "+213659059711",
+          "accountSid": "AC8ef3e8ede276da4fbb18faa41f812b37",
+          "accountToken": "a89013ddfa84b434279203e51d9e3f37"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1097,
+          "layoutY": 358
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "BPM sms",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "var sms = 'patient 1 has unacceptable BPM (Beat per Minute): ' + metadata.BPM + ' beat/min';\r\nreturn  {msg:sms, metadata: metadata, msgType: msgType} ;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "Send warning messages",
+          "layoutX": 1355,
+          "layoutY": 356
+        },
+        "type": "org.thingsboard.rule.engine.pe.twilio.TbTwilioSmsNode",
+        "name": "BPM twilio SMS",
+        "debugMode": true,
+        "configuration": {
+          "numberFrom": "+19785232198",
+          "numbersTo": "+213659059711",
+          "accountSid": "AC8ef3e8ede276da4fbb18faa41f812b37",
+          "accountToken": "a89013ddfa84b434279203e51d9e3f37"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 529,
+          "layoutY": 366
+        },
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "clear alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmType": "General Alarm",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 533,
+          "layoutY": 151
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "add temperture to metadata",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": " metadata.temperature = msg.temperature;\r\n return {msg: msg, metadata: metadata, msgType: msgType};\r\n \r\n \r\n \r\n"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 782,
+          "layoutY": 152
+        },
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "create alarm",
+        "debugMode": true,
+        "configuration": {
+          "alarmType": "General Alarm",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+          "severity": "CRITICAL",
+          "propagate": false,
+          "propagateToOwner": false,
+          "propagateToOwnerHierarchy": false,
+          "propagateToTenant": false,
+          "useMessageAlarmData": false,
+          "overwriteAlarmDetails": false,
+          "dynamicSeverity": false,
+          "relationTypes": []
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1098,
+          "layoutY": 152
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "Temperature Email",
+        "debugMode": true,
+        "configuration": {
+          "fromTemplate": "info@testmail.org",
+          "toTemplate": "mouhamed.barcalona.79@gmail.com",
+          "ccTemplate": null,
+          "bccTemplate": null,
+          "subjectTemplate": "${deviceName}  temperature unacceptable\n",
+          "mailBodyType": "false",
+          "isHtmlTemplate": null,
+          "bodyTemplate": "${deviceName} 1 has unacceptable temperature : ${temperature} °C\n\n"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1358,
+          "layoutY": 151
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "SendGrid SMTP",
+        "debugMode": true,
+        "configuration": {
+          "useSystemSmtpSettings": true,
+          "smtpHost": "localhost",
+          "smtpPort": 25,
+          "username": null,
+          "password": null,
+          "smtpProtocol": "smtp",
+          "timeout": 10000,
+          "enableTls": false,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 298,
+          "layoutY": 151
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "temperature thresholds",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "return ((msg.temperature < 36)||( msg.temperature > 38)) ; \n"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 535,
+          "layoutY": 271
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "add BPM to metadata",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": " metadata.BPM = msg.BPM;\r\n return {msg: msg, metadata: metadata, msgType: msgType};\r\n \r\n \r\n \r\n"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 781,
+          "layoutY": 270
+        },
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "create alarm",
+        "debugMode": true,
+        "configuration": {
+          "alarmType": "General Alarm",
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+          "severity": "CRITICAL",
+          "propagate": false,
+          "propagateToOwner": false,
+          "propagateToOwnerHierarchy": false,
+          "propagateToTenant": false,
+          "useMessageAlarmData": false,
+          "overwriteAlarmDetails": false,
+          "dynamicSeverity": false,
+          "relationTypes": []
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1097,
+          "layoutY": 272
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "BPM Email",
+        "debugMode": true,
+        "configuration": {
+          "fromTemplate": "info@testmail.org",
+          "toTemplate": "mouhamed.barcalona.79@gmail.com",
+          "ccTemplate": null,
+          "bccTemplate": null,
+          "subjectTemplate": "${deviceName} BPM unacceptable\n",
+          "mailBodyType": "false",
+          "isHtmlTemplate": null,
+          "bodyTemplate": "${deviceName} 1 has unacceptable BPM (Beat per Minute) : ${BPM} beat/min\n\n"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1356,
+          "layoutY": 275
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "SendGrid SMTP",
+        "debugMode": true,
+        "configuration": {
+          "useSystemSmtpSettings": true,
+          "smtpHost": "localhost",
+          "smtpPort": 25,
+          "username": null,
+          "password": null,
+          "smtpProtocol": "smtp",
+          "timeout": 10000,
+          "enableTls": false,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 297,
+          "layoutY": 271
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "BPM thresholds",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return (( msg.BPM < 60 )||( msg.BPM > 100 )) ;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1097,
+          "layoutY": 71
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "Temperature sms",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "var sms = 'patient 1 has an unacceptable temperature: ' + metadata.temperature + '°C';\r\nreturn  {msg:sms, metadata: metadata, msgType: msgType} ;"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 13,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 2,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 5,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 6,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 6,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 14,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 14,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 6,
+        "toIndex": 7,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 7,
+        "toIndex": 13,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 8,
+        "toIndex": 4,
+        "type": "True"
+      },
+      {
+        "fromIndex": 8,
+        "toIndex": 13,
+        "type": "False"
+      },
+      {
+        "fromIndex": 9,
+        "toIndex": 10,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 11,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 11,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 1,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 1,
+        "type": "Updated"
+      },
+      {
+        "fromIndex": 11,
+        "toIndex": 12,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 9,
+        "type": "True"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 3,
+        "type": "False"
+      },
+      {
+        "fromIndex": 14,
+        "toIndex": 0,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
