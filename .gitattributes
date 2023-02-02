@@ -1,7 +1,8 @@
 docs/* linguist-documentation
 
-*.* linguist-language=Python
-
+src/*.py linguist-language=Python
+tools/ThingsBoard-IoT-Platform/Dashbords/*.html linguist-languagee=HTML
+tools/ThingsBoard-IoT-Platform/Alarm-Configurations/*.json linguist-language=JSON
 
 src/*.py linguist-detectable=true
 tools/ThingsBoard-IoT-Platform/Dashbords/*.html linguist-detectable=true
