@@ -1,5 +1,5 @@
 docs/* linguist-documentation
-src/*.py linguist-vendored
+
 src/*.py linguist-language=Python
 tools/ThingsBoard-IoT-Platform/Dashbords/*.html linguist-languagee=HTML
 tools/ThingsBoard-IoT-Platform/Alarm-Configurations/*.json linguist-language=JSON
