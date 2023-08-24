@@ -1,17 +1,18 @@
-#====================================================================================================================================================
-# Name           : main_ECG_Prog.py
-# Authors        : 
-#    - Mr. Mohamed Ali Haoufa
-#    - Mr. Mohamed Nacer Namane
-# Created on     : Jun 7, 2022
-# Description    : It's the main program of our project, where we included all the sub-programs together to implement the following functionalities :
-#                  - Read and collect the ECG Data from the Serial Port and save it in the CSV file.
-#                  - Spliting and calculating the frequency sampling of the Collected data.
-#                  - Filtering and processing the ECG data.
-#                  - The Encryption of data and then sending it to the IoT platform.
-#                  - Testing the data to see if there is a remarkable change.
-#====================================================================================================================================================
+"""!
+@file main_ECG_Prog.py
+@brief It's the main program of our project, where we included all the sub-programs together to implement the following functionalities :
+                  - Read and collect the ECG Data from the Serial Port and save it in the CSV file.
+                  - Spliting and calculating the frequency sampling of the Collected data.
+                  - Filtering and processing the ECG data.
+                  - The Encryption of data and then sending it to the IoT platform.
+                  - Testing the data to see if there is a remarkable change.
 
+@author
+      - Mr. Mohamed Ali Haoufa
+      - Mr. Mohamed Nacer Namane
+@date Jun 7, 2022
+@copyright Copyright (c) 2022.  All rights reserved.
+"""
 import serial
 import Save_Data_Functions as sv 
 import Resample as pr
@@ -27,11 +28,13 @@ import string
 import os
 import time
 import sys
-### serial port config ####
+
+## Serial port configuration ##
 arduino = serial.Serial(
     port="/dev/ttyUSB0", baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE
 )
-### Channel mcp 3008 selection ### 
+
+## Channel MCP3008 selection ## 
 lectura = MCP3008(channel=2) 
 temp_data = {'temperature': 0}
 BPM_data = {'BPM': 0}
@@ -39,7 +42,7 @@ IBI_data =  {'IBI' : 0}
 RMSSD_data = {'RMSSD': 0}
 image_data = {'image':0}
 
-### Define some values ##
+## Define some values ##
 order = 5
 fs_of_filer = 5000
 temp_min = 0
@@ -51,40 +54,36 @@ IBI_max = 0
 RMSSD_min = 0
 RMSSD_max = 0
 imagename ='ECG_signal.png'
-filename1 = 'data_csv_record.csv' ### Choose name of csv file 
+filename1 = 'data_csv_record.csv' # Choose name of csv file  
 
-# The two Encryption Keys : key/iv
-key = '03GosECsvhxGtbo=' #16 char for AES128
+# The two Encryption Keys: key/iv
+key = '03GosECsvhxGtbo='  # 16 char for AES128
 
-#FIX IV
-iv =  'gaqIlAht+3nZWw=='.encode('utf-8') #16 char for AES128
+# FIX IV
+iv =  'gaqIlAht+3nZWw=='.encode('utf-8') # 16 char for AES128
 
 while 1 : 
-    ## Start : 
-    ### Save 3600 values equivalent to 30 s of data ### 
+   ## Start : 
+   ### Save 3600 values equivalent to 30 s of data ### 
    for i in range (3600) :
       data=str(arduino.readline()).strip(",.babcdef'rxfn\ ")
       sv.write_to_csv(data,filename1) 
       print('Collecting data'+str(i) +'%')
 
    try : 
-         ## Split and Calcul fs ###############
-
+         ## Split and Calculate fs ##
          time1 , data , fs = sm.split_and_calcul_fs(filename1)
 
-         ##  Filter data    ########################
-
+         ## Filter data ##
          filtred_data = fl.final_filter(data, fs_of_filer, order) 
          
-         ###  Process the ecg  data   #################
-
+         ### Process the ECG data ###
          BPM ,IBI ,RMSSD   = pr.process_signal(filtred_data,fs)
 
-         ### Read temperature :
+         ### Read temperature ###
+         temp = (lectura.value * 3.3)*100 + 0.3 # calibration
 
-         temp = (lectura.value * 3.3)*100 + 0.3 #calibtion
-
-         ###  Rounding values  ### 
+         ### Rounding values ###
          temp = round(int (temp), 2)
          BPM = round(int(BPM), 2)
          IBI = round(int(IBI), 2)
@@ -95,7 +94,7 @@ while 1 :
          # Convert IBI from ms to s :
          IBI = IBI /1000
 
-         # The Encryption of data : 
+         # Encrypt data:
          temp_encrypted= sn.encrypt(temp,key,iv)
          temp_encrypted = temp_encrypted.decode("utf-8", "ignore")
 
