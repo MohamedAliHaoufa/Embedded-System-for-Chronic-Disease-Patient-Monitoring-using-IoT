@@ -1,0 +1,180 @@
+\hypertarget{main__ECG__Prog_8py}{}\doxysection{src/main\+\_\+\+ECG\+\_\+\+Prog.py File Reference}
+\label{main__ECG__Prog_8py}\index{src/main\_ECG\_Prog.py@{src/main\_ECG\_Prog.py}}
+
+
+It\textquotesingle{}s the main program of our project, where we included all the sub-\/programs together to implement the following functionalities \+:  
+
+
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{main__ECG__Prog_8py_ad6568658ce1622fcd7563d794dd32b33}{main\+\_\+\+ECG\+\_\+\+Prog.\+arduino}}
+\begin{DoxyCompactList}\small\item\em Serial port configuration \#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a2c314e244d3e845b3cfc4e272325b21d}\label{main__ECG__Prog_8py_a2c314e244d3e845b3cfc4e272325b21d}} 
+\mbox{\hyperlink{main__ECG__Prog_8py_a2c314e244d3e845b3cfc4e272325b21d}{main\+\_\+\+ECG\+\_\+\+Prog.\+lectura}} = MCP3008(channel=2)
+\begin{DoxyCompactList}\small\item\em Channel MCP3008 selection \#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a5fc9e989308f3dee3c19b2c63643dc61}\label{main__ECG__Prog_8py_a5fc9e989308f3dee3c19b2c63643dc61}} 
+dictionary {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+temp\+\_\+data} = \{\textquotesingle{}temperature\textquotesingle{}\+: 0\}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_ae0718a9299fe170f25afecd65b8b85ed}\label{main__ECG__Prog_8py_ae0718a9299fe170f25afecd65b8b85ed}} 
+dictionary {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+BPM\+\_\+data} = \{\textquotesingle{}BPM\textquotesingle{}\+: 0\}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_ab673200d67bcf3a9f5792cca344bcdd4}\label{main__ECG__Prog_8py_ab673200d67bcf3a9f5792cca344bcdd4}} 
+dictionary {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+IBI\+\_\+data} = \{\textquotesingle{}IBI\textquotesingle{} \+: 0\}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a7b071d9ad78669dc5d91393d6bcc3db2}\label{main__ECG__Prog_8py_a7b071d9ad78669dc5d91393d6bcc3db2}} 
+dictionary {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+RMSSD\+\_\+data} = \{\textquotesingle{}RMSSD\textquotesingle{}\+: 0\}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a414318abcbfbf62b545d080abaddbe83}\label{main__ECG__Prog_8py_a414318abcbfbf62b545d080abaddbe83}} 
+dictionary {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+image\+\_\+data} = \{\textquotesingle{}image\textquotesingle{}\+:0\}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a5ff4d966c7c7df699fb941ad57995902}\label{main__ECG__Prog_8py_a5ff4d966c7c7df699fb941ad57995902}} 
+int \mbox{\hyperlink{main__ECG__Prog_8py_a5ff4d966c7c7df699fb941ad57995902}{main\+\_\+\+ECG\+\_\+\+Prog.\+order}} = 5
+\begin{DoxyCompactList}\small\item\em Define some values \#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a373f83bc20b074ae1778b9254768e08e}\label{main__ECG__Prog_8py_a373f83bc20b074ae1778b9254768e08e}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+fs\+\_\+of\+\_\+filer} = 5000
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_acf31387a735cd87a5fa96e3218267301}\label{main__ECG__Prog_8py_acf31387a735cd87a5fa96e3218267301}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+temp\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a054469fb3e40768ab4f151c9c9e4b00e}\label{main__ECG__Prog_8py_a054469fb3e40768ab4f151c9c9e4b00e}} 
+int \mbox{\hyperlink{main__ECG__Prog_8py_a054469fb3e40768ab4f151c9c9e4b00e}{main\+\_\+\+ECG\+\_\+\+Prog.\+temp\+\_\+max}} = 0
+\begin{DoxyCompactList}\small\item\em Change the intervals of each parameter if it has a remarkable change \#\#\#\#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a126cb8ba8b044d4e1eb2a69dd9be0a3e}\label{main__ECG__Prog_8py_a126cb8ba8b044d4e1eb2a69dd9be0a3e}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+BPM\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_aa841302ace109589e80c21458a4e04ea}\label{main__ECG__Prog_8py_aa841302ace109589e80c21458a4e04ea}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+BPM\+\_\+max} = 0
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_aec3c932ed2c6f2d6867d2d3b97ea657c}\label{main__ECG__Prog_8py_aec3c932ed2c6f2d6867d2d3b97ea657c}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+IBI\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a5d25f741100f2c8258ee630be173923a}\label{main__ECG__Prog_8py_a5d25f741100f2c8258ee630be173923a}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+IBI\+\_\+max} = 0
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a04b40c74dfdf1dcc29a5fbd90eb08599}\label{main__ECG__Prog_8py_a04b40c74dfdf1dcc29a5fbd90eb08599}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+RMSSD\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_acd0f43ab4b9726c02adadd7445483ae8}\label{main__ECG__Prog_8py_acd0f43ab4b9726c02adadd7445483ae8}} 
+int {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+RMSSD\+\_\+max} = 0
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_afc21d4339cd212aa27eb1ad29fc1fb01}\label{main__ECG__Prog_8py_afc21d4339cd212aa27eb1ad29fc1fb01}} 
+string {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+imagename} = \textquotesingle{}ECG\+\_\+signal.\+png\textquotesingle{}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a8304afbca16de92ee91a572ca6329e5e}\label{main__ECG__Prog_8py_a8304afbca16de92ee91a572ca6329e5e}} 
+string {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+filename1} = \textquotesingle{}data\+\_\+csv\+\_\+record.\+csv\textquotesingle{}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_aaf65b62f9cacad5d437d6856d5597f64}\label{main__ECG__Prog_8py_aaf65b62f9cacad5d437d6856d5597f64}} 
+string {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+key} = \textquotesingle{}03Gos\+ECsvhx\+Gtbo=\textquotesingle{}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a2d8a0e63364bafc7cd35e77b7aef8f25}\label{main__ECG__Prog_8py_a2d8a0e63364bafc7cd35e77b7aef8f25}} 
+string {\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+iv} = \textquotesingle{}gaq\+Il\+Aht+3n\+ZWw==\textquotesingle{}.encode(\textquotesingle{}utf-\/8\textquotesingle{})
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a970c0d9bef0885073a0f7fcdeed5774e}\label{main__ECG__Prog_8py_a970c0d9bef0885073a0f7fcdeed5774e}} 
+\mbox{\hyperlink{main__ECG__Prog_8py_a970c0d9bef0885073a0f7fcdeed5774e}{main\+\_\+\+ECG\+\_\+\+Prog.\+data}} = str(arduino.\+readline()).strip(\char`\"{},.babcdef\textquotesingle{}rxfn\textbackslash{} \char`\"{})
+\begin{DoxyCompactList}\small\item\em Start \+: Save 3600 values equivalent to 30 s of data \#\#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a9ebe26c6169ac3eded49d3f5a85818b5}\label{main__ECG__Prog_8py_a9ebe26c6169ac3eded49d3f5a85818b5}} 
+\mbox{\hyperlink{main__ECG__Prog_8py_a9ebe26c6169ac3eded49d3f5a85818b5}{main\+\_\+\+ECG\+\_\+\+Prog.\+time1}}
+\begin{DoxyCompactList}\small\item\em Split and Calculate fs \#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_af5436b4b62562b5cb1df15b0face306d}\label{main__ECG__Prog_8py_af5436b4b62562b5cb1df15b0face306d}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+fs}
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_af87fb34aa61ce98a2d551bf7596e16a1}\label{main__ECG__Prog_8py_af87fb34aa61ce98a2d551bf7596e16a1}} 
+\mbox{\hyperlink{main__ECG__Prog_8py_af87fb34aa61ce98a2d551bf7596e16a1}{main\+\_\+\+ECG\+\_\+\+Prog.\+filtred\+\_\+data}} = fl.\+final\+\_\+filter(data, fs\+\_\+of\+\_\+filer, order)
+\begin{DoxyCompactList}\small\item\em Filter data \#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a86b7635f5f01791f95325707e3db69e0}\label{main__ECG__Prog_8py_a86b7635f5f01791f95325707e3db69e0}} 
+\mbox{\hyperlink{main__ECG__Prog_8py_a86b7635f5f01791f95325707e3db69e0}{main\+\_\+\+ECG\+\_\+\+Prog.\+BPM}} = round(int(BPM), 2)
+\begin{DoxyCompactList}\small\item\em Process the ECG data \#\#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a3a78f55df734e335bc34fed0ab0107b7}\label{main__ECG__Prog_8py_a3a78f55df734e335bc34fed0ab0107b7}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+IBI} = round(int(IBI), 2)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a9af8ccc90152e7465f8ffca6bd8dd4b2}\label{main__ECG__Prog_8py_a9af8ccc90152e7465f8ffca6bd8dd4b2}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+RMSSD} = round(int(RMSSD), 2)
+\item 
+tuple \mbox{\hyperlink{main__ECG__Prog_8py_a9ac1773c1b4b71f81770eb5742c1bc51}{main\+\_\+\+ECG\+\_\+\+Prog.\+temp}} = (lectura.\+value $\ast$ 3.\+3)$\ast$100 + 0.\+3
+\begin{DoxyCompactList}\small\item\em Read temperature \#\#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a859ac20e23c2ce47500561deccd9398c}\label{main__ECG__Prog_8py_a859ac20e23c2ce47500561deccd9398c}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+temp\+\_\+encrypted} = sn.\+encrypt(temp,key,iv)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a9ce79503392f1589e3542d023c4478d2}\label{main__ECG__Prog_8py_a9ce79503392f1589e3542d023c4478d2}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+BPM\+\_\+encrypted} = sn.\+encrypt(BPM,key,iv)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_ac6053749af14637807d6d8940517cbba}\label{main__ECG__Prog_8py_ac6053749af14637807d6d8940517cbba}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+IBI\+\_\+encrypted} = sn.\+encrypt(IBI,key,iv)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a77fcf4557c55b0eab2815af6d973fd5c}\label{main__ECG__Prog_8py_a77fcf4557c55b0eab2815af6d973fd5c}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+RMSSD\+\_\+encrypted} = sn.\+encrypt(RMSSD,key,iv)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a4cf559f8fe330d4219467d1171182fa9}\label{main__ECG__Prog_8py_a4cf559f8fe330d4219467d1171182fa9}} 
+\mbox{\hyperlink{main__ECG__Prog_8py_a4cf559f8fe330d4219467d1171182fa9}{main\+\_\+\+ECG\+\_\+\+Prog.\+temp\+\_\+flag}} = sn.\+Temp\+\_\+\+Sending\+\_\+\+Condition(temp,temp\+\_\+min,temp\+\_\+max, sn.\+temp\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Test change of data and send it to Things\+Board IOT platform \#\#\#\#\#. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a41d7ece28847f330e8b62a62a6c72884}\label{main__ECG__Prog_8py_a41d7ece28847f330e8b62a62a6c72884}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+bpm\+\_\+flag} = sn.\+BPM\+\_\+\+Sending\+\_\+\+Condition(BPM,BPM\+\_\+min,BPM\+\_\+max, sn.\+BPM\+\_\+data)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a27faa56f7968beb1ff5402f7649ae9bc}\label{main__ECG__Prog_8py_a27faa56f7968beb1ff5402f7649ae9bc}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+ibi\+\_\+flag} = sn.\+IBI\+\_\+\+Sending\+\_\+\+Condition(IBI,IBI\+\_\+min,IBI\+\_\+max, sn.\+IBI\+\_\+data)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_a2a67b9fb8ffcccd55e7ffe328d2b543a}\label{main__ECG__Prog_8py_a2a67b9fb8ffcccd55e7ffe328d2b543a}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+rmssd\+\_\+flag} = sn.\+RMSSD\+\_\+\+Sending\+\_\+\+Condition(RMSSD,RMSSD\+\_\+min,RMSSD\+\_\+max, sn.\+RMSSD\+\_\+data)
+\item 
+\mbox{\Hypertarget{main__ECG__Prog_8py_aa458ea9869ba772471b8a79652488fc9}\label{main__ECG__Prog_8py_aa458ea9869ba772471b8a79652488fc9}} 
+{\bfseries main\+\_\+\+ECG\+\_\+\+Prog.\+b64\+\_\+string} = sn.\+image\+\_\+generator(filtred\+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It\textquotesingle{}s the main program of our project, where we included all the sub-\/programs together to implement the following functionalities \+: 
+
+
+\begin{DoxyItemize}
+\item Read and collect the ECG Data from the Serial Port and save it in the CSV file.
+\item Spliting and calculating the frequency sampling of the Collected data.
+\item Filtering and processing the ECG data.
+\item The Encryption of data and then sending it to the IoT platform.
+\item Testing the data to see if there is a remarkable change.
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+
+\begin{DoxyItemize}
+\item Mr. Mohamed Ali Haoufa
+\item Mr. Mohamed Nacer Namane 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Jun 7, 2022 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main__ECG__Prog_8py_ad6568658ce1622fcd7563d794dd32b33}\label{main__ECG__Prog_8py_ad6568658ce1622fcd7563d794dd32b33}} 
+\index{main\_ECG\_Prog.py@{main\_ECG\_Prog.py}!arduino@{arduino}}
+\index{arduino@{arduino}!main\_ECG\_Prog.py@{main\_ECG\_Prog.py}}
+\doxysubsubsection{\texorpdfstring{arduino}{arduino}}
+{\footnotesize\ttfamily main\+\_\+\+ECG\+\_\+\+Prog.\+arduino}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  serial.Serial(}
+\DoxyCodeLine{2     port=\textcolor{stringliteral}{"{}/dev/ttyUSB0"{}}, baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS\_ONE}
+\DoxyCodeLine{3 )}
+
+\end{DoxyCode}
+
+
+Serial port configuration \#\#. 
+
+\mbox{\Hypertarget{main__ECG__Prog_8py_a9ac1773c1b4b71f81770eb5742c1bc51}\label{main__ECG__Prog_8py_a9ac1773c1b4b71f81770eb5742c1bc51}} 
+\index{main\_ECG\_Prog.py@{main\_ECG\_Prog.py}!temp@{temp}}
+\index{temp@{temp}!main\_ECG\_Prog.py@{main\_ECG\_Prog.py}}
+\doxysubsubsection{\texorpdfstring{temp}{temp}}
+{\footnotesize\ttfamily main\+\_\+\+ECG\+\_\+\+Prog.\+temp = (lectura.\+value $\ast$ 3.\+3)$\ast$100 + 0.\+3}
+
+
+
+Read temperature \#\#\#. 
+
+Rounding values \#\#\#. 

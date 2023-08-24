@@ -1,0 +1,47 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Embedded-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}System-\/for-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Chronic-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Disease-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Patient-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Monitoring-\/using-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IoT}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Documentation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ECG\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Noise\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Filter.py File Reference}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{6}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Function Documentation}{6}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}butter\_highpass()}{6}{subsubsection.3.1.2.1}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}butter\_lowpass()}{7}{subsubsection.3.1.2.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.3}final\_filter()}{7}{subsubsection.3.1.2.3}%
+\contentsline {subsubsection}{\numberline {3.1.2.4}highpass()}{8}{subsubsection.3.1.2.4}%
+\contentsline {subsubsection}{\numberline {3.1.2.5}lowpass()}{8}{subsubsection.3.1.2.5}%
+\contentsline {subsubsection}{\numberline {3.1.2.6}notch()}{9}{subsubsection.3.1.2.6}%
+\contentsline {subsubsection}{\numberline {3.1.2.7}notch\_filter()}{9}{subsubsection.3.1.2.7}%
+\contentsline {section}{\numberline {3.2}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IOT\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Send\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Functions.py File Reference}{9}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{10}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Function Documentation}{11}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}BPM\_Sending\_Condition()}{11}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}cvt\_2\_base64()}{11}{subsubsection.3.2.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.3}encrypt()}{12}{subsubsection.3.2.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.2.4}IBI\_Sending\_Condition()}{12}{subsubsection.3.2.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.2.5}image\_generator()}{13}{subsubsection.3.2.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.2.6}MAX\_value()}{13}{subsubsection.3.2.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.2.7}MIN\_value()}{13}{subsubsection.3.2.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.2.8}RMSSD\_Sending\_Condition()}{15}{subsubsection.3.2.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.2.9}Temp\_Sending\_Condition()}{15}{subsubsection.3.2.2.9}%
+\contentsline {section}{\numberline {3.3}src/main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ECG\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Prog.py File Reference}{16}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Detailed Description}{17}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Variable Documentation}{17}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}arduino}{18}{subsubsection.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}temp}{18}{subsubsection.3.3.2.2}%
+\contentsline {section}{\numberline {3.4}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Resample.py File Reference}{18}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Detailed Description}{18}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Function Documentation}{18}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}process\_signal()}{18}{subsubsection.3.4.2.1}%
+\contentsline {section}{\numberline {3.5}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sample\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rate.py File Reference}{19}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Detailed Description}{19}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Function Documentation}{19}{subsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.1}split\_and\_calcul\_fs()}{19}{subsubsection.3.5.2.1}%
+\contentsline {section}{\numberline {3.6}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Save\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Functions.py File Reference}{20}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Detailed Description}{20}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Function Documentation}{20}{subsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.2.1}delete\_png()}{20}{subsubsection.3.6.2.1}%
+\contentsline {subsubsection}{\numberline {3.6.2.2}remove\_csv()}{21}{subsubsection.3.6.2.2}%
+\contentsline {subsubsection}{\numberline {3.6.2.3}write\_to\_csv()}{21}{subsubsection.3.6.2.3}%
+\contentsline {chapter}{Index}{23}{section*.10}%

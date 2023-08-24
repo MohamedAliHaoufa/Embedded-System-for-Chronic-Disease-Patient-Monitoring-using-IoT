@@ -1,0 +1,314 @@
+\hypertarget{IOT__Change__Send__Functions_8py}{}\doxysection{src/\+IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.py File Reference}
+\label{IOT__Change__Send__Functions_8py}\index{src/IOT\_Change\_Send\_Functions.py@{src/IOT\_Change\_Send\_Functions.py}}
+
+
+In this sub-\/program, we developed certain functions to encrypt, change and send the collected data to the IoT platform.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_ab15cb4d290fdde12c17e691d289d9e51}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+encrypt}} (data, key, iv)
+\begin{DoxyCompactList}\small\item\em Encrypts the given data using AES encryption. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_a7e01f324f8e445a74f8f9578a39eccec}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+MAX\+\_\+value}} (parameter, number)
+\begin{DoxyCompactList}\small\item\em Calculates the maximum value by adding a number to the parameter. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_aae7be05ee4557049b3f80d8055d6bb3c}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+MIN\+\_\+value}} (parameter, number)
+\begin{DoxyCompactList}\small\item\em Calculates the minimum value by subtracting a number from the parameter. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_a367f2cd6254090e05a920650ec57fb55}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+Temp\+\_\+\+Sending\+\_\+\+Condition}} (temp, temp\+\_\+min, temp\+\_\+max, temp\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Checks if the temperature value is within the specified range before sending. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_aa9d212c942ccbeac33b9716066bfae30}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+BPM\+\_\+\+Sending\+\_\+\+Condition}} (BPM, BPM\+\_\+min, BPM\+\_\+max, BPM\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Checks if the BPM value is within the specified range before sending. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_ac6090fdf2ddff41469bce1ff31cc22e7}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+IBI\+\_\+\+Sending\+\_\+\+Condition}} (IBI, IBI\+\_\+min, IBI\+\_\+max, IBI\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Checks if the IBI value is within the specified range before sending. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_ab806b0815ecebf164f1e4b60dde7df32}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+RMSSD\+\_\+\+Sending\+\_\+\+Condition}} (RMSSD, RMSSD\+\_\+min, RMSSD\+\_\+max, RMSSD\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Checks if the RMSSD value is within the specified range before sending. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_a15ff3929288cf56c07c8c1dcfa237bad}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+cvt\+\_\+2\+\_\+base64}} (filename)
+\begin{DoxyCompactList}\small\item\em Converts an image file to a Base64-\/encoded string. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{IOT__Change__Send__Functions_8py_a35790d463f3cc5914b372bf5136659f3}{IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+image\+\_\+generator}} (data)
+\begin{DoxyCompactList}\small\item\em Generates and saves an image of the ECG signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a1c18777dab18c655cbfb3bb9dd2de0f9}\label{IOT__Change__Send__Functions_8py_a1c18777dab18c655cbfb3bb9dd2de0f9}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+INTERVAL} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a7f40d5ba6671de4e0066a152d4f4d5d8}\label{IOT__Change__Send__Functions_8py_a7f40d5ba6671de4e0066a152d4f4d5d8}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+temp\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_aafc5325cf7e23539ad1e5bb77381a07c}\label{IOT__Change__Send__Functions_8py_aafc5325cf7e23539ad1e5bb77381a07c}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+temp\+\_\+max} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a4ff989d172574b68143a4c76d874d4f9}\label{IOT__Change__Send__Functions_8py_a4ff989d172574b68143a4c76d874d4f9}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+BPM\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a099f97cea6660b6bf2b3bb9938a3679c}\label{IOT__Change__Send__Functions_8py_a099f97cea6660b6bf2b3bb9938a3679c}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+BPM\+\_\+max} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a5b4114ce28841ad4d6c9de2fef5dea7f}\label{IOT__Change__Send__Functions_8py_a5b4114ce28841ad4d6c9de2fef5dea7f}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+IBI\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_ac54751cdbccae3a323bef0487a346465}\label{IOT__Change__Send__Functions_8py_ac54751cdbccae3a323bef0487a346465}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+IBI\+\_\+max} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a246d9f8d2d3e652afa608f23a74954a2}\label{IOT__Change__Send__Functions_8py_a246d9f8d2d3e652afa608f23a74954a2}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+RMSSD\+\_\+min} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_af5d8107fa61674ce46d452d9e4f242c7}\label{IOT__Change__Send__Functions_8py_af5d8107fa61674ce46d452d9e4f242c7}} 
+int {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+RMSSD\+\_\+max} = 0
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a7432f54445636a54788a087002c74e6d}\label{IOT__Change__Send__Functions_8py_a7432f54445636a54788a087002c74e6d}} 
+string {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+THINGSBOARD\+\_\+\+HOST} = \textquotesingle{}thingsboard.\+cloud\textquotesingle{}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_abc2e2b75e46f47bfe433bb4132664e23}\label{IOT__Change__Send__Functions_8py_abc2e2b75e46f47bfe433bb4132664e23}} 
+string {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+ACCESS\+\_\+\+TOKEN} = \textquotesingle{}REPLACE\+\_\+\+With\+\_\+\+YOUR\+\_\+\+ACCESS\+\_\+\+TOKEN\textquotesingle{}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a995b0b4c89ad18e4231820b7546524b4}\label{IOT__Change__Send__Functions_8py_a995b0b4c89ad18e4231820b7546524b4}} 
+dictionary {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+temp\+\_\+data} = \{\textquotesingle{}temperature\textquotesingle{}\+: 0\}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a53a7ead4bfcf4a2f02f2d59f9a6c6012}\label{IOT__Change__Send__Functions_8py_a53a7ead4bfcf4a2f02f2d59f9a6c6012}} 
+dictionary {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+BPM\+\_\+data} = \{\textquotesingle{}BPM\textquotesingle{}\+: 0\}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a5d344e0bdca82b91bb4196278bc74b2e}\label{IOT__Change__Send__Functions_8py_a5d344e0bdca82b91bb4196278bc74b2e}} 
+dictionary {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+IBI\+\_\+data} = \{\textquotesingle{}IBI\textquotesingle{} \+: 0\}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a328c3bcf7a4441ba8ee8127a2f9265b8}\label{IOT__Change__Send__Functions_8py_a328c3bcf7a4441ba8ee8127a2f9265b8}} 
+dictionary {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+RMSSD\+\_\+data} = \{\textquotesingle{}RMSSD\textquotesingle{}\+: 0\}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a37adc093c17b25e0e7e22851eab894ba}\label{IOT__Change__Send__Functions_8py_a37adc093c17b25e0e7e22851eab894ba}} 
+dictionary {\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+image\+\_\+data} = \{\textquotesingle{}image\textquotesingle{}\+:0\}
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a078c6b9050475e2faa02d19a517a30ad}\label{IOT__Change__Send__Functions_8py_a078c6b9050475e2faa02d19a517a30ad}} 
+{\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+next\+\_\+reading} = time.\+time()
+\item 
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a5f48851dd98aad66bddc8955fbe0337c}\label{IOT__Change__Send__Functions_8py_a5f48851dd98aad66bddc8955fbe0337c}} 
+{\bfseries IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+client} = mqtt.\+Client()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In this sub-\/program, we developed certain functions to encrypt, change and send the collected data to the IoT platform. 
+
+\begin{DoxyAuthor}{Author}
+
+\begin{DoxyItemize}
+\item Mr. Mohamed Ali Haoufa
+\item Mr. Mohamed Nacer Namane 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Jun 7, 2022 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_aa9d212c942ccbeac33b9716066bfae30}\label{IOT__Change__Send__Functions_8py_aa9d212c942ccbeac33b9716066bfae30}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!BPM\_Sending\_Condition@{BPM\_Sending\_Condition}}
+\index{BPM\_Sending\_Condition@{BPM\_Sending\_Condition}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{BPM\_Sending\_Condition()}{BPM\_Sending\_Condition()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+BPM\+\_\+\+Sending\+\_\+\+Condition (\begin{DoxyParamCaption}\item[{}]{BPM,  }\item[{}]{BPM\+\_\+min,  }\item[{}]{BPM\+\_\+max,  }\item[{}]{BPM\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Checks if the BPM value is within the specified range before sending. 
+
+This function checks whether the BPM value is within the specified range and sends the data to Things\+Board if the condition is met.
+
+
+\begin{DoxyParams}{Parameters}
+{\em BPM} & The BPM value to be checked. \\
+\hline
+{\em BPM\+\_\+min} & The minimum allowed BPM value. \\
+\hline
+{\em BPM\+\_\+max} & The maximum allowed BPM value. \\
+\hline
+{\em BPM\+\_\+data} & The data to be sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the condition is met and data is sent, False otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a15ff3929288cf56c07c8c1dcfa237bad}\label{IOT__Change__Send__Functions_8py_a15ff3929288cf56c07c8c1dcfa237bad}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!cvt\_2\_base64@{cvt\_2\_base64}}
+\index{cvt\_2\_base64@{cvt\_2\_base64}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{cvt\_2\_base64()}{cvt\_2\_base64()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+cvt\+\_\+2\+\_\+base64 (\begin{DoxyParamCaption}\item[{}]{filename }\end{DoxyParamCaption})}
+
+
+
+Converts an image file to a Base64-\/encoded string. 
+
+This function reads an image file and converts its content to a Base64-\/encoded string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the image file to be converted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Base64-\/encoded string representation of the image. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_ab15cb4d290fdde12c17e691d289d9e51}\label{IOT__Change__Send__Functions_8py_ab15cb4d290fdde12c17e691d289d9e51}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{encrypt()}{encrypt()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+encrypt (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{key,  }\item[{}]{iv }\end{DoxyParamCaption})}
+
+
+
+Encrypts the given data using AES encryption. 
+
+This function encrypts the given data using the AES encryption algorithm and returns the encrypted result.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data to be encrypted. \\
+\hline
+{\em key} & The encryption key. \\
+\hline
+{\em iv} & The initialization vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The encrypted data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_ac6090fdf2ddff41469bce1ff31cc22e7}\label{IOT__Change__Send__Functions_8py_ac6090fdf2ddff41469bce1ff31cc22e7}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!IBI\_Sending\_Condition@{IBI\_Sending\_Condition}}
+\index{IBI\_Sending\_Condition@{IBI\_Sending\_Condition}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{IBI\_Sending\_Condition()}{IBI\_Sending\_Condition()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+IBI\+\_\+\+Sending\+\_\+\+Condition (\begin{DoxyParamCaption}\item[{}]{IBI,  }\item[{}]{IBI\+\_\+min,  }\item[{}]{IBI\+\_\+max,  }\item[{}]{IBI\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Checks if the IBI value is within the specified range before sending. 
+
+This function checks whether the IBI value is within the specified range and sends the data to Things\+Board if the condition is met.
+
+
+\begin{DoxyParams}{Parameters}
+{\em IBI} & The IBI value to be checked. \\
+\hline
+{\em IBI\+\_\+min} & The minimum allowed IBI value. \\
+\hline
+{\em IBI\+\_\+max} & The maximum allowed IBI value. \\
+\hline
+{\em IBI\+\_\+data} & The data to be sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the condition is met and data is sent, False otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a35790d463f3cc5914b372bf5136659f3}\label{IOT__Change__Send__Functions_8py_a35790d463f3cc5914b372bf5136659f3}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!image\_generator@{image\_generator}}
+\index{image\_generator@{image\_generator}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{image\_generator()}{image\_generator()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+image\+\_\+generator (\begin{DoxyParamCaption}\item[{}]{data }\end{DoxyParamCaption})}
+
+
+
+Generates and saves an image of the ECG signal. 
+
+This function generates an image of the ECG signal using the provided data and saves it as a PNG file. It also converts the image to a Base64-\/encoded string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The ECG signal data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Base64-\/encoded string representation of the generated image. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a7e01f324f8e445a74f8f9578a39eccec}\label{IOT__Change__Send__Functions_8py_a7e01f324f8e445a74f8f9578a39eccec}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!MAX\_value@{MAX\_value}}
+\index{MAX\_value@{MAX\_value}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{MAX\_value()}{MAX\_value()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+MAX\+\_\+value (\begin{DoxyParamCaption}\item[{}]{parameter,  }\item[{}]{number }\end{DoxyParamCaption})}
+
+
+
+Calculates the maximum value by adding a number to the parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & The base value. \\
+\hline
+{\em number} & The number to be added.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated maximum value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_aae7be05ee4557049b3f80d8055d6bb3c}\label{IOT__Change__Send__Functions_8py_aae7be05ee4557049b3f80d8055d6bb3c}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!MIN\_value@{MIN\_value}}
+\index{MIN\_value@{MIN\_value}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{MIN\_value()}{MIN\_value()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+MIN\+\_\+value (\begin{DoxyParamCaption}\item[{}]{parameter,  }\item[{}]{number }\end{DoxyParamCaption})}
+
+
+
+Calculates the minimum value by subtracting a number from the parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & The base value. \\
+\hline
+{\em number} & The number to be subtracted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated minimum value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_ab806b0815ecebf164f1e4b60dde7df32}\label{IOT__Change__Send__Functions_8py_ab806b0815ecebf164f1e4b60dde7df32}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!RMSSD\_Sending\_Condition@{RMSSD\_Sending\_Condition}}
+\index{RMSSD\_Sending\_Condition@{RMSSD\_Sending\_Condition}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{RMSSD\_Sending\_Condition()}{RMSSD\_Sending\_Condition()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+RMSSD\+\_\+\+Sending\+\_\+\+Condition (\begin{DoxyParamCaption}\item[{}]{RMSSD,  }\item[{}]{RMSSD\+\_\+min,  }\item[{}]{RMSSD\+\_\+max,  }\item[{}]{RMSSD\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Checks if the RMSSD value is within the specified range before sending. 
+
+This function checks whether the RMSSD value is within the specified range and sends the data to Things\+Board if the condition is met.
+
+
+\begin{DoxyParams}{Parameters}
+{\em RMSSD} & The RMSSD value to be checked. \\
+\hline
+{\em RMSSD\+\_\+min} & The minimum allowed RMSSD value. \\
+\hline
+{\em RMSSD\+\_\+max} & The maximum allowed RMSSD value. \\
+\hline
+{\em RMSSD\+\_\+data} & The data to be sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the condition is met and data is sent, False otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IOT__Change__Send__Functions_8py_a367f2cd6254090e05a920650ec57fb55}\label{IOT__Change__Send__Functions_8py_a367f2cd6254090e05a920650ec57fb55}} 
+\index{IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}!Temp\_Sending\_Condition@{Temp\_Sending\_Condition}}
+\index{Temp\_Sending\_Condition@{Temp\_Sending\_Condition}!IOT\_Change\_Send\_Functions.py@{IOT\_Change\_Send\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{Temp\_Sending\_Condition()}{Temp\_Sending\_Condition()}}
+{\footnotesize\ttfamily def IOT\+\_\+\+Change\+\_\+\+Send\+\_\+\+Functions.\+Temp\+\_\+\+Sending\+\_\+\+Condition (\begin{DoxyParamCaption}\item[{}]{temp,  }\item[{}]{temp\+\_\+min,  }\item[{}]{temp\+\_\+max,  }\item[{}]{temp\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Checks if the temperature value is within the specified range before sending. 
+
+This function checks whether the temperature value is within the specified range and sends the data to Things\+Board if the condition is met.
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & The temperature value to be checked. \\
+\hline
+{\em temp\+\_\+min} & The minimum allowed temperature. \\
+\hline
+{\em temp\+\_\+max} & The maximum allowed temperature. \\
+\hline
+{\em temp\+\_\+data} & The data to be sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the condition is met and data is sent, False otherwise. 
+\end{DoxyReturn}

@@ -1,0 +1,59 @@
+\hypertarget{Resample_8py}{}\doxysection{src/\+Resample.py File Reference}
+\label{Resample_8py}\index{src/Resample.py@{src/Resample.py}}
+
+
+In this sub-\/program, we processed the ECG signal data and extracted the essential vital parameters.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{Resample_8py_aa4f654fc75a03d172a8301bebbd960bd}{Resample.\+process\+\_\+signal}} (data, fs)
+\begin{DoxyCompactList}\small\item\em Process a signal using the heartpy library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In this sub-\/program, we processed the ECG signal data and extracted the essential vital parameters. 
+
+\begin{DoxyAuthor}{Author}
+
+\begin{DoxyItemize}
+\item Mr. Mohamed Ali Haoufa
+\item Mr. Mohamed Nacer Namane 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Jun 7, 2022 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Resample_8py_aa4f654fc75a03d172a8301bebbd960bd}\label{Resample_8py_aa4f654fc75a03d172a8301bebbd960bd}} 
+\index{Resample.py@{Resample.py}!process\_signal@{process\_signal}}
+\index{process\_signal@{process\_signal}!Resample.py@{Resample.py}}
+\doxysubsubsection{\texorpdfstring{process\_signal()}{process\_signal()}}
+{\footnotesize\ttfamily def Resample.\+process\+\_\+signal (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{fs }\end{DoxyParamCaption})}
+
+
+
+Process a signal using the heartpy library. 
+
+This function processes a given signal using the heartpy library and extracts the heart rate-\/related parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The input signal data. \\
+\hline
+{\em fs} & The sampling frequency of the input signal.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bpm The calculated beats per minute. 
+
+ibi The calculated interbeat intervals. 
+
+rmssd The calculated root mean square of successive differences. 
+\end{DoxyReturn}

@@ -1,0 +1,225 @@
+\hypertarget{ECG__Noise__Filter_8py}{}\doxysection{src/\+ECG\+\_\+\+Noise\+\_\+\+Filter.py File Reference}
+\label{ECG__Noise__Filter_8py}\index{src/ECG\_Noise\_Filter.py@{src/ECG\_Noise\_Filter.py}}
+
+
+In this sub-\/program, we have combined multiple filters to create our final filter.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{ECG__Noise__Filter_8py_a2ea350bc0b5202c2068847af2d401f91}{ECG\+\_\+\+Noise\+\_\+\+Filter.\+butter\+\_\+highpass}} (cutoff, fs, order=5)
+\begin{DoxyCompactList}\small\item\em Apply a Butterworth high-\/pass filter to a signal. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{ECG__Noise__Filter_8py_a3e2f262dcd7622a54b032f7f458beaee}{ECG\+\_\+\+Noise\+\_\+\+Filter.\+butter\+\_\+lowpass}} (cutoff, fs, order=5)
+\begin{DoxyCompactList}\small\item\em Apply a Butterworth low-\/pass filter to a signal. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{ECG__Noise__Filter_8py_a7f76f53d1f898af25d2b116aded40444}{ECG\+\_\+\+Noise\+\_\+\+Filter.\+notch\+\_\+filter}} (cutoff, q, fs)
+\begin{DoxyCompactList}\small\item\em Apply a notch filter to an ECG signal. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{ECG__Noise__Filter_8py_a3fc92e2236e4f9f167b891187115e878}{ECG\+\_\+\+Noise\+\_\+\+Filter.\+highpass}} (data, fs, order=5)
+\begin{DoxyCompactList}\small\item\em Apply a high-\/pass filter to input data. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{ECG__Noise__Filter_8py_a38b9bac0c5091541012d5539a937d065}{ECG\+\_\+\+Noise\+\_\+\+Filter.\+lowpass}} (data, fs, order=5)
+\begin{DoxyCompactList}\small\item\em Apply a low-\/pass filter to input data. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{ECG__Noise__Filter_8py_a3b03b676b6825bc5fe2d7fb0ebd2f1c7}{ECG\+\_\+\+Noise\+\_\+\+Filter.\+notch}} (data, powerline, q)
+\begin{DoxyCompactList}\small\item\em Apply a notch filter to remove powerline interference from input data. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{ECG__Noise__Filter_8py_a380d5633cf707dc6e04a69bddedddb2b}{ECG\+\_\+\+Noise\+\_\+\+Filter.\+final\+\_\+filter}} (data, fs, order=5)
+\begin{DoxyCompactList}\small\item\em Apply a series of filters to the input data for noise reduction and signal enhancement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a5601f524504df7c19b463e8023043f8d}\label{ECG__Noise__Filter_8py_a5601f524504df7c19b463e8023043f8d}} 
+int {\bfseries ECG\+\_\+\+Noise\+\_\+\+Filter.\+cutoff\+\_\+high} = 20
+\item 
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a607083283666bb8749fec995b4c9ddca}\label{ECG__Noise__Filter_8py_a607083283666bb8749fec995b4c9ddca}} 
+int {\bfseries ECG\+\_\+\+Noise\+\_\+\+Filter.\+cutoff\+\_\+low} = 600
+\item 
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_ac3b652a82f85943e20dce9c8a5126fc9}\label{ECG__Noise__Filter_8py_ac3b652a82f85943e20dce9c8a5126fc9}} 
+int {\bfseries ECG\+\_\+\+Noise\+\_\+\+Filter.\+powerline} = 60
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In this sub-\/program, we have combined multiple filters to create our final filter. 
+
+\begin{DoxyAuthor}{Author}
+
+\begin{DoxyItemize}
+\item Mr. Mohamed Ali Haoufa
+\item Mr. Mohamed Nacer Namane 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Jun 7, 2022 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a2ea350bc0b5202c2068847af2d401f91}\label{ECG__Noise__Filter_8py_a2ea350bc0b5202c2068847af2d401f91}} 
+\index{ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}!butter\_highpass@{butter\_highpass}}
+\index{butter\_highpass@{butter\_highpass}!ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}}
+\doxysubsubsection{\texorpdfstring{butter\_highpass()}{butter\_highpass()}}
+{\footnotesize\ttfamily def ECG\+\_\+\+Noise\+\_\+\+Filter.\+butter\+\_\+highpass (\begin{DoxyParamCaption}\item[{}]{cutoff,  }\item[{}]{fs,  }\item[{}]{order = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Apply a Butterworth high-\/pass filter to a signal. 
+
+This function applies a high-\/pass filter to a signal to attenuate frequencies lower than the specified cutoff frequency. The order of the filter determines the roll-\/off rate of the attenuation. The resulting filter coefficients (b, a) can be used to filter the signal using the {\ttfamily scipy.\+signal.\+lfilter} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cutoff} & The frequency below which lower frequencies will be attenuated, in Hertz. \\
+\hline
+{\em fs} & The sampling frequency of the signal in Hertz. \\
+\hline
+{\em order} & The order of the Butterworth filter (default is 5). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: The filter coefficients (b, a) for the high-\/pass filter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a3e2f262dcd7622a54b032f7f458beaee}\label{ECG__Noise__Filter_8py_a3e2f262dcd7622a54b032f7f458beaee}} 
+\index{ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}!butter\_lowpass@{butter\_lowpass}}
+\index{butter\_lowpass@{butter\_lowpass}!ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}}
+\doxysubsubsection{\texorpdfstring{butter\_lowpass()}{butter\_lowpass()}}
+{\footnotesize\ttfamily def ECG\+\_\+\+Noise\+\_\+\+Filter.\+butter\+\_\+lowpass (\begin{DoxyParamCaption}\item[{}]{cutoff,  }\item[{}]{fs,  }\item[{}]{order = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Apply a Butterworth low-\/pass filter to a signal. 
+
+This function applies a low-\/pass filter to a signal to attenuate frequencies higher than the specified cutoff frequency. The order of the filter determines the roll-\/off rate of the attenuation. The resulting filter coefficients (b, a) can be used to filter the signal using the {\ttfamily scipy.\+signal.\+lfilter} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cutoff} & The frequency above which higher frequencies will be attenuated, in Hertz. \\
+\hline
+{\em fs} & The sampling frequency of the signal in Hertz. \\
+\hline
+{\em order} & The order of the Butterworth filter (default is 5). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: The filter coefficients (b, a) for the low-\/pass filter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a380d5633cf707dc6e04a69bddedddb2b}\label{ECG__Noise__Filter_8py_a380d5633cf707dc6e04a69bddedddb2b}} 
+\index{ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}!final\_filter@{final\_filter}}
+\index{final\_filter@{final\_filter}!ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}}
+\doxysubsubsection{\texorpdfstring{final\_filter()}{final\_filter()}}
+{\footnotesize\ttfamily def ECG\+\_\+\+Noise\+\_\+\+Filter.\+final\+\_\+filter (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{fs,  }\item[{}]{order = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Apply a series of filters to the input data for noise reduction and signal enhancement. 
+
+This function applies a series of filters in sequence to the input data in order to achieve noise reduction and enhance the signal. The process includes a high-\/pass filter, a low-\/pass filter, and a notch filter to remove unwanted frequency components.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The input signal data to be filtered. \\
+\hline
+{\em fs} & The sampling frequency of the input data, in Hertz. \\
+\hline
+{\em order} & The order of the Butterworth filters used for high-\/pass and low-\/pass filtering. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: The filtered and enhanced signal after applying the series of filters. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a3fc92e2236e4f9f167b891187115e878}\label{ECG__Noise__Filter_8py_a3fc92e2236e4f9f167b891187115e878}} 
+\index{ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}!highpass@{highpass}}
+\index{highpass@{highpass}!ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}}
+\doxysubsubsection{\texorpdfstring{highpass()}{highpass()}}
+{\footnotesize\ttfamily def ECG\+\_\+\+Noise\+\_\+\+Filter.\+highpass (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{fs,  }\item[{}]{order = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Apply a high-\/pass filter to input data. 
+
+This function applies a high-\/pass filter to the input data using a Butterworth high-\/pass filter with the specified order. The resulting filtered signal is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The input signal data to be filtered. \\
+\hline
+{\em fs} & The sampling frequency of the input signal, in Hertz. \\
+\hline
+{\em order} & The order of the Butterworth high-\/pass filter (default is 5). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: The filtered signal after applying the high-\/pass filter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a38b9bac0c5091541012d5539a937d065}\label{ECG__Noise__Filter_8py_a38b9bac0c5091541012d5539a937d065}} 
+\index{ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}!lowpass@{lowpass}}
+\index{lowpass@{lowpass}!ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}}
+\doxysubsubsection{\texorpdfstring{lowpass()}{lowpass()}}
+{\footnotesize\ttfamily def ECG\+\_\+\+Noise\+\_\+\+Filter.\+lowpass (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{fs,  }\item[{}]{order = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Apply a low-\/pass filter to input data. 
+
+This function applies a low-\/pass filter to the input data using a Butterworth low-\/pass filter with the specified order. The resulting filtered signal is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The input signal data to be filtered. \\
+\hline
+{\em fs} & The sampling frequency of the input signal, in Hertz. \\
+\hline
+{\em order} & The order of the Butterworth low-\/pass filter (default is 5). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: The filtered signal after applying the low-\/pass filter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a3b03b676b6825bc5fe2d7fb0ebd2f1c7}\label{ECG__Noise__Filter_8py_a3b03b676b6825bc5fe2d7fb0ebd2f1c7}} 
+\index{ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}!notch@{notch}}
+\index{notch@{notch}!ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}}
+\doxysubsubsection{\texorpdfstring{notch()}{notch()}}
+{\footnotesize\ttfamily def ECG\+\_\+\+Noise\+\_\+\+Filter.\+notch (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{powerline,  }\item[{}]{q }\end{DoxyParamCaption})}
+
+
+
+Apply a notch filter to remove powerline interference from input data. 
+
+This function applies a notch filter to the input data in order to remove powerline interference at a specific frequency. The resulting filtered signal is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The input signal data to be filtered. \\
+\hline
+{\em powerline} & The frequency of the powerline interference to be removed, in Hertz. \\
+\hline
+{\em q} & The quality factor (Q) of the notch filter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: The filtered signal after applying the notch filter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ECG__Noise__Filter_8py_a7f76f53d1f898af25d2b116aded40444}\label{ECG__Noise__Filter_8py_a7f76f53d1f898af25d2b116aded40444}} 
+\index{ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}!notch\_filter@{notch\_filter}}
+\index{notch\_filter@{notch\_filter}!ECG\_Noise\_Filter.py@{ECG\_Noise\_Filter.py}}
+\doxysubsubsection{\texorpdfstring{notch\_filter()}{notch\_filter()}}
+{\footnotesize\ttfamily def ECG\+\_\+\+Noise\+\_\+\+Filter.\+notch\+\_\+filter (\begin{DoxyParamCaption}\item[{}]{cutoff,  }\item[{}]{q,  }\item[{}]{fs }\end{DoxyParamCaption})}
+
+
+
+Apply a notch filter to an ECG signal. 
+
+This function applies a notch filter to an ECG signal to attenuate frequencies around the specified cutoff frequency. The quality factor (q) determines the width of the notch. The resulting filter coefficients (b, a) can be used to filter the signal using the {\ttfamily scipy.\+signal.\+lfilter} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cutoff} & The frequency to be attenuated in Hertz. \\
+\hline
+{\em q} & The quality factor of the notch filter. \\
+\hline
+{\em fs} & The sampling frequency of the ECG signal in Hertz. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: The filter coefficients (b, a) for the notch filter. 
+\end{DoxyReturn}

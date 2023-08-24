@@ -1,0 +1,57 @@
+\hypertarget{SampleRate_8py}{}\doxysection{src/\+Sample\+Rate.py File Reference}
+\label{SampleRate_8py}\index{src/SampleRate.py@{src/SampleRate.py}}
+
+
+In this sub-\/program, we split the collected data into two types and used them to calculate the frequency sampling of the ECG signal.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{SampleRate_8py_aaf84371906cad2595363184c9babd11d}{Sample\+Rate.\+split\+\_\+and\+\_\+calcul\+\_\+fs}} (filename)
+\begin{DoxyCompactList}\small\item\em Read data from a CSV file and calculate the sampling frequency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In this sub-\/program, we split the collected data into two types and used them to calculate the frequency sampling of the ECG signal. 
+
+\begin{DoxyAuthor}{Author}
+
+\begin{DoxyItemize}
+\item Mr. Mohamed Ali Haoufa
+\item Mr. Mohamed Nacer Namane 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Jun 7, 2022 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{SampleRate_8py_aaf84371906cad2595363184c9babd11d}\label{SampleRate_8py_aaf84371906cad2595363184c9babd11d}} 
+\index{SampleRate.py@{SampleRate.py}!split\_and\_calcul\_fs@{split\_and\_calcul\_fs}}
+\index{split\_and\_calcul\_fs@{split\_and\_calcul\_fs}!SampleRate.py@{SampleRate.py}}
+\doxysubsubsection{\texorpdfstring{split\_and\_calcul\_fs()}{split\_and\_calcul\_fs()}}
+{\footnotesize\ttfamily def Sample\+Rate.\+split\+\_\+and\+\_\+calcul\+\_\+fs (\begin{DoxyParamCaption}\item[{}]{filename }\end{DoxyParamCaption})}
+
+
+
+Read data from a CSV file and calculate the sampling frequency. 
+
+This function reads data from a CSV file, extracts the time and data columns, and calculates the sampling frequency (fs).
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the CSV file containing the data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+time The time values extracted from the CSV file. 
+
+data The data values extracted from the CSV file. 
+
+fs The calculated sampling frequency. 
+\end{DoxyReturn}

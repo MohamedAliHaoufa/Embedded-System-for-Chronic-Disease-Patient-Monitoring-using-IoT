@@ -1,0 +1,99 @@
+\hypertarget{Save__Data__Functions_8py}{}\doxysection{src/\+Save\+\_\+\+Data\+\_\+\+Functions.py File Reference}
+\label{Save__Data__Functions_8py}\index{src/Save\_Data\_Functions.py@{src/Save\_Data\_Functions.py}}
+
+
+This sub-\/program includes the functions needed to save and remove/delete data ( CSV, png ).  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{Save__Data__Functions_8py_ae2890e1422150aae103f1b26c3274fe2}{Save\+\_\+\+Data\+\_\+\+Functions.\+write\+\_\+to\+\_\+csv}} (data, filename)
+\begin{DoxyCompactList}\small\item\em Write data to a CSV file. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{Save__Data__Functions_8py_aa813cc0655bcd31efce5973898b68413}{Save\+\_\+\+Data\+\_\+\+Functions.\+remove\+\_\+csv}} (filename)
+\begin{DoxyCompactList}\small\item\em Remove a CSV file if it exists. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{Save__Data__Functions_8py_a623fa8f1bfb04a5ffd6ab6d6c0c7d596}{Save\+\_\+\+Data\+\_\+\+Functions.\+delete\+\_\+png}} (png\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Delete a PNG image file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This sub-\/program includes the functions needed to save and remove/delete data ( CSV, png ). 
+
+\begin{DoxyAuthor}{Author}
+
+\begin{DoxyItemize}
+\item Mr. Mohamed Ali Haoufa
+\item Mr. Mohamed Nacer Namane 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Jun 7, 2022 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Save__Data__Functions_8py_a623fa8f1bfb04a5ffd6ab6d6c0c7d596}\label{Save__Data__Functions_8py_a623fa8f1bfb04a5ffd6ab6d6c0c7d596}} 
+\index{Save\_Data\_Functions.py@{Save\_Data\_Functions.py}!delete\_png@{delete\_png}}
+\index{delete\_png@{delete\_png}!Save\_Data\_Functions.py@{Save\_Data\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{delete\_png()}{delete\_png()}}
+{\footnotesize\ttfamily def Save\+\_\+\+Data\+\_\+\+Functions.\+delete\+\_\+png (\begin{DoxyParamCaption}\item[{}]{png\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Delete a PNG image file. 
+
+This function removes the specified PNG image file from the file system.
+
+
+\begin{DoxyParams}{Parameters}
+{\em png\+\_\+name} & The name of the PNG image file to be deleted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Save__Data__Functions_8py_aa813cc0655bcd31efce5973898b68413}\label{Save__Data__Functions_8py_aa813cc0655bcd31efce5973898b68413}} 
+\index{Save\_Data\_Functions.py@{Save\_Data\_Functions.py}!remove\_csv@{remove\_csv}}
+\index{remove\_csv@{remove\_csv}!Save\_Data\_Functions.py@{Save\_Data\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{remove\_csv()}{remove\_csv()}}
+{\footnotesize\ttfamily def Save\+\_\+\+Data\+\_\+\+Functions.\+remove\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{filename }\end{DoxyParamCaption})}
+
+
+
+Remove a CSV file if it exists. 
+
+This function checks if the specified file exists and is a regular file. If it does, the file is deleted. If the file does not exist or is not a regular file, a corresponding message is printed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the CSV file to be removed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+message A message indicating whether the file was deleted or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Save__Data__Functions_8py_ae2890e1422150aae103f1b26c3274fe2}\label{Save__Data__Functions_8py_ae2890e1422150aae103f1b26c3274fe2}} 
+\index{Save\_Data\_Functions.py@{Save\_Data\_Functions.py}!write\_to\_csv@{write\_to\_csv}}
+\index{write\_to\_csv@{write\_to\_csv}!Save\_Data\_Functions.py@{Save\_Data\_Functions.py}}
+\doxysubsubsection{\texorpdfstring{write\_to\_csv()}{write\_to\_csv()}}
+{\footnotesize\ttfamily def Save\+\_\+\+Data\+\_\+\+Functions.\+write\+\_\+to\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+
+
+Write data to a CSV file. 
+
+This function appends a timestamp and data to a CSV file. It uses the current time as a timestamp, and the provided data is appended to the file along with the timestamp.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data to be written to the CSV file. \\
+\hline
+{\em filename} & The name of the CSV file to write to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+write\+\_\+to\+\_\+log The result of the write operation (1 for success, 0 for failure). 
+\end{DoxyReturn}
