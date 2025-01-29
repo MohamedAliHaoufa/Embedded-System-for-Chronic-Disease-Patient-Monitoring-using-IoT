@@ -15,4 +15,4 @@ The project aims to develop an innovative embedded system tailored for monitorin
 
 The system further organizes this data into an intuitive interface, facilitating easy access and comprehension for medical professionals, thereby enabling remote patient monitoring from any global location. Additionally, the system boasts an advanced warning mechanism embedded within the IoT platform. This feature proactively notifies healthcare providers of any deviations from the norm in patients' health parameters, empowering them to promptly intervene and ensure optimal patient care and outcomes.
 
-Keywords: Embedded system, Chronic Disease, Health, patients, MQTT protocol, Encryption, AES (Advanced Encryption Standard) Algorithm, IoT Platform, Sensors.
+Keywords: Embedded system, Chronic Disease, Health, patients, MQTT protocol, AES (Advanced Encryption Standard) Encryption, IoT Platform, Sensors.
