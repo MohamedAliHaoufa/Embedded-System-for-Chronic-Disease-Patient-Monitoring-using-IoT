@@ -17,3 +17,29 @@ The system further organizes this data into an intuitive interface, facilitating
 
 
 Keywords: Embedded system, Chronic Disease, Health, patients, MQTT protocol, AES (Advanced Encryption Standard) Encryption, IoT Platform, Sensors.
+
+
+## Project File Structure
+
+Below is an overview of the project's directory structure:
+
+- **docs/**  
+  Contains the master’s thesis documentation, which includes design details, methodology, and other related materials.
+  
+- **doxygen-docs/**  
+  Contains the auto-generated Doxygen documentation that provides comprehensive code documentation.
+
+- **src/**  
+  Hosts the source code for the main ECG program responsible for data collection, processing, encryption, etc.
+
+- **tools/ThingsBoard-IoT-Platform/**  
+  Contains the HTML files and related resources that develop a secure IoT web server interface for real-time monitoring.
+
+- **Doxyfile**  
+  The configuration file for Doxygen, used to generate the documentation in the `doxygen-docs` folder.
+
+- **.gitattributes**  
+  This file defines custom attributes for files in the repository, ensuring consistency in text encoding and line endings.
+
+- **README.md**  
+  The primary documentation file that provides an overview of the project, usage instructions, and additional information.
